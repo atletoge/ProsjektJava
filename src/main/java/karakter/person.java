@@ -12,6 +12,7 @@ public class Person {
     private String email;
     private List<String> nameList = new ArrayList();
     private String password;
+    private List<Integer> grades;
 
     //Konstruktør for registrering
     public Person(String name, int studentID, String email, String password, String password1) {
@@ -100,12 +101,14 @@ public class Person {
         return password;
     }
 
+    //public addCourse(Course course)
+
     public static void main(String[] args) {
         Person person = new Person("Atle Østrem Tøge", 911002, "atLetØ@stud.ntnu.no", "Test1234!", "Test1234!");
         System.out.println(person.getStudentID());
     }
 
-
+    
 
 
 }
