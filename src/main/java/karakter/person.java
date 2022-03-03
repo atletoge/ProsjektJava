@@ -83,6 +83,7 @@ public class Person {
     }
     private boolean validatePassword(String password, String password1) {
         if(password.equals(password1)) {
+            //Regex kode som sier at passord må være mellom 8-20 tegn, må inneholde minst en stor og liten bokstav. I tillegg må passordet inneholde minst 1 tall og et spesialtegn "@#$%!?".
             if(password.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!?]).{8,20}$")) {
                 return true;
             }throw new IllegalArgumentException("Passordet må inneholde minst en stor og liten bokstav, et tall, ett spesialsymbol og være mellom 8 og 20 tegn. ");
@@ -100,7 +101,7 @@ public class Person {
     }
 
     public static void main(String[] args) {
-        Person person = new Person("Atle Østrem Tøge", 911002, "atLetØ@stud.ntnu.no", "Test1234?Test1234?Test1234?", "Test1234?Test1234?Test1234?");
+        Person person = new Person("Atle Østrem Tøge", 911002, "atLetØ@stud.ntnu.no", "Test1234!", "Test1234!");
         System.out.println(person.getStudentID());
     }
 
