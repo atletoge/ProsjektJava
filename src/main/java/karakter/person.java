@@ -11,11 +11,14 @@ public class Person {
     private int studentID;
     private String email;
     private List<String> nameList = new ArrayList();
+    private String password;
 
-    public Person(String name, int studentID, String email) {
+    //Konstruktør for registrering
+    public Person(String name, int studentID, String email, String password, String password1) {
         setName(name);
         setEmail(email);
         setStudentID(studentID);
+        setPassword(password, password1);
     }
 
     private boolean validateName(String name) {
@@ -78,11 +81,30 @@ public class Person {
     public int getStudentID() {
         return studentID;
     }
+    private boolean validatePassword(String password, String password1) {
+        if(password.equals(password1)) {
+            if(password.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!?]).{8,20}$")) {
+                return true;
+            }throw new IllegalArgumentException("Passordet må inneholde minst en stor og liten bokstav, et tall, ett spesialsymbol og være mellom 8 og 20 tegn. ");
 
+        }throw new IllegalArgumentException("Passordene er ikke like");
+    }
+
+    private void setPassword(String password, String password1) {
+        validatePassword(password, password1);
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     public static void main(String[] args) {
-        Person person = new Person("Atle Østrem Tøge", 911002, "atLetØ@stud.ntnu.no");
+        Person person = new Person("Atle Østrem Tøge", 911002, "atLetØ@stud.ntnu.no", "Test1234?Test1234?Test1234?", "Test1234?Test1234?Test1234?");
         System.out.println(person.getStudentID());
     }
+
+
+
 
 }
