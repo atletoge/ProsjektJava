@@ -12,7 +12,7 @@ public class Person {
     private String email;
     private List<String> nameList = new ArrayList();
     private String password;
-    private List<Integer> grades;
+    private List<Course> grades;
 
     //Konstruktør for registrering
     public Person(String name, int studentID, String email, String password, String password1) {
@@ -20,6 +20,7 @@ public class Person {
         setEmail(email);
         setStudentID(studentID);
         setPassword(password, password1);
+        this.grades = new ArrayList();
     }
 
     private boolean validateName(String name) {
@@ -29,6 +30,9 @@ public class Person {
         else {
             throw new IllegalArgumentException("Navnet du oppga er ikke gyldig");
         }
+    }
+    public List<Course> getGrades() {
+        return grades;
     }
 
     private void setName(String name) {
@@ -101,11 +105,19 @@ public class Person {
         return password;
     }
 
+    public void addGrade(String course, char grade) {
+        Course kurs = new Course(course,grade);
+        grades.add(kurs);
+    }
+
     //public addCourse(Course course)
 
     public static void main(String[] args) {
-        Person person = new Person("Atle Østrem Tøge", 911002, "atLetØ@stud.ntnu.no", "Test1234!", "Test1234!");
-        System.out.println(person.getStudentID());
+        Person person = new Person("Atle Toge", 911002, "atleto@stud.ntnu.no", "Test1234!", "Test1234!");
+        //System.out.println(person.getStudentID());
+        person.addGrade("TTM4100", 'B');
+        person.addGrade("TTM4102", 'C');
+        System.out.println(person.getGrades()); 
     }
 
     

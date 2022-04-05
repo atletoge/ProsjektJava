@@ -19,9 +19,9 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextField layoutX="5.0" layoutY="8.0" prefHeight="36.0" prefWidth="211.0" promptText="Skriv inn e-post" />
-                              <PasswordField layoutX="5.0" layoutY="44.0" prefHeight="39.0" prefWidth="210.0" promptText="Skriv inn passord" />
-                              <Button layoutX="5.0" layoutY="113.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="211.0" text="Logg inn" />
+                              <TextField fx:id="epostl" layoutX="5.0" layoutY="8.0" prefHeight="36.0" prefWidth="211.0" promptText="Skriv inn e-post" />
+                              <PasswordField fx:id="passordl" layoutX="5.0" layoutY="44.0" prefHeight="39.0" prefWidth="210.0" promptText="Skriv inn passord" />
+                              <Button fx:id="loggInn" layoutX="5.0" layoutY="113.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="211.0" text="Logg inn" />
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
@@ -29,12 +29,12 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0">
                            <children>
-                              <TextField layoutY="2.0" prefHeight="26.0" prefWidth="208.0" promptText="Navn" />
-                              <TextField layoutX="1.0" layoutY="28.0" prefHeight="26.0" prefWidth="203.0" promptText="StudentID" />
-                              <TextField layoutX="1.0" layoutY="54.0" prefHeight="26.0" prefWidth="203.0" promptText="Skrv inn e-post" />
-                              <PasswordField layoutX="2.0" layoutY="78.0" prefHeight="26.0" prefWidth="197.0" promptText="Skriv inn passord" />
-                              <PasswordField layoutX="2.0" layoutY="104.0" prefHeight="26.0" prefWidth="197.0" promptText="Skriv inn passord" />
-                              <Button layoutX="-6.0" layoutY="153.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="218.0" text="Registrer" />
+                              <TextField fx:id="navn" layoutY="2.0" prefHeight="26.0" prefWidth="208.0" promptText="Navn" />
+                              <TextField fx:id="studentid" layoutX="1.0" layoutY="28.0" prefHeight="26.0" prefWidth="203.0" promptText="StudentID" />
+                              <TextField fx:id="epostr" layoutX="1.0" layoutY="54.0" prefHeight="26.0" prefWidth="203.0" promptText="Skrv inn e-post" />
+                              <PasswordField fx:id="passordr1" layoutX="2.0" layoutY="78.0" prefHeight="26.0" prefWidth="197.0" promptText="Skriv inn passord" />
+                              <PasswordField fx:id="passordr2" layoutX="2.0" layoutY="104.0" prefHeight="26.0" prefWidth="197.0" promptText="Skriv inn passord" />
+                              <Button fx:id="registrer" layoutX="-6.0" layoutY="153.0" mnemonicParsing="false" onAction="#handleRegistrerPress" prefHeight="26.0" prefWidth="218.0" text="Registrer" />
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
@@ -42,12 +42,12 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TextField layoutY="16.0" prefHeight="26.0" prefWidth="131.0" promptText="Legg inn fagkode" />
-                  <TextField layoutX="131.0" layoutY="16.0" prefHeight="26.0" prefWidth="123.0" promptText="Karakter (A-F)" />
-                  <Button layoutX="254.0" layoutY="16.0" mnemonicParsing="false" text="Legg til" />
-                  <Button layoutX="2.0" layoutY="345.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="103.0" text="Lagre" />
-                  <Button layoutX="104.0" layoutY="345.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="218.0" text="Logg ut" />
-                  <ListView layoutX="5.0" layoutY="50.0" prefHeight="189.0" prefWidth="310.0" />
+                  <TextField fx:id="fagkode" layoutY="16.0" prefHeight="26.0" prefWidth="131.0" promptText="Legg inn fagkode" />
+                  <TextField fx:id="karakter" layoutX="131.0" layoutY="16.0" prefHeight="26.0" prefWidth="123.0" promptText="Karakter (A-F)" />
+                  <Button fx:id="leggTil" layoutX="254.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleLeggtil" text="Legg til" />
+                  <Button fx:id="slettAlt" layoutX="2.0" layoutY="345.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="103.0" text="Slett alt" />
+                  <Button fx:id="loggUt" layoutX="104.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleLoggUt" prefHeight="26.0" prefWidth="218.0" text="Logg ut" />
+                  <ListView fx:id="liste" layoutX="5.0" layoutY="50.0" prefHeight="189.0" prefWidth="310.0" />
                </children>
             </AnchorPane>
         </items>

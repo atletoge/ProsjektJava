@@ -8,8 +8,19 @@ public class Kalkulator {
         
     }
 
+
+    public int getKarakterTall() {
+        return karakterTall;
+    }
+
+
+    private void setKarakterTall(int karakterTall) {
+        this.karakterTall = karakterTall;
+    }
+
+
     public Kalkulator(Course course) {
-        this.karakterTall = toNumber(course.getGrade());
+        setKarakterTall(toNumber(course.getGrade()));
     }
 
     private int toNumber(char chr) {
@@ -17,8 +28,7 @@ public class Kalkulator {
     }
 
     public static void main(String[] args) {
-        Kalkulator kalkulator = new Kalkulator();
-        System.out.println(kalkulator.toNumber('A'));
+        
     }
 
 }
