@@ -23,6 +23,13 @@ public class Person {
         this.grades = new ArrayList();
     }
 
+    //Dummy konstruktør for fxml testing
+    public Person(int studentID, String password) {
+        this.studentID = studentID;
+        this.password = password;
+        this.grades = new ArrayList();
+    }
+
     private boolean validateName(String name) {
         if(name.matches("^([a-zA-ZæøåÆØÅ]{2,}\\s[a-zA-ZæøåÆØÅ]{1,}'?-?[a-zA-ZæøåÆØÅ]{2,}\\s?([a-zA-ZæøåÆØÅ]{1,})?)")) {
            return true; 

@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 
 public class karakterController {
     @FXML
-    public TextField epostr, epostl, studentid,navn,karakter,fagkode;
+    public TextField epostr, studentidl, studentid,navn,karakter,fagkode;
 
     @FXML
     public Button loggInn, registrer,leggTil,slettAlt,loggUt;
@@ -51,6 +51,14 @@ public class karakterController {
         loggUt.setVisible(false);
         leggTil.setVisible(false);
         slettAlt.setVisible(false);
+        courses.clear();
+    }
+
+    @FXML
+    public void handleLoggInn() {
+        Person person = new Person(Integer.parseInt(studentidl.getText()), passordl.getText());
+        this.person = person;
+        login();
     }
 
     @FXML

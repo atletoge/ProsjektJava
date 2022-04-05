@@ -19,9 +19,9 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextField fx:id="epostl" layoutX="5.0" layoutY="8.0" prefHeight="36.0" prefWidth="211.0" promptText="Skriv inn e-post" />
+                              <TextField fx:id="studentidl" layoutX="5.0" layoutY="8.0" prefHeight="36.0" prefWidth="211.0" promptText="Skriv inn studentid" />
                               <PasswordField fx:id="passordl" layoutX="5.0" layoutY="44.0" prefHeight="39.0" prefWidth="210.0" promptText="Skriv inn passord" />
-                              <Button fx:id="loggInn" layoutX="5.0" layoutY="113.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="211.0" text="Logg inn" />
+                              <Button fx:id="loggInn" layoutX="5.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleLoggInn" prefHeight="26.0" prefWidth="211.0" text="Logg inn" />
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
