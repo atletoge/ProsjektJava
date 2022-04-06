@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class karakterApp extends Application {
+public class KarakterApp extends Application {
 
     public static void main(String[] args) {
         Application.launch(args);

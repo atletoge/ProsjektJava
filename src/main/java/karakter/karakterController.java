@@ -8,7 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class karakterController {
+public class KarakterController {
     @FXML
     public TextField epostr, studentidl, studentid,navn,karakter,fagkode;
 
