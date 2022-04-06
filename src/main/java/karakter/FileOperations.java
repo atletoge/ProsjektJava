@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.locks.ReadWriteLock;
 
 public class FileOperations implements FileShell {
 
@@ -20,12 +21,27 @@ public class FileOperations implements FileShell {
     }
 
     @Override
-    public void saveUserData(int studentID, String password, List<Course> grades) {
-        
+    public void saveUserData(Person person) {
         try {
+            // Brukeren eksisterer allerede så vi må trikse litt
+            if(this.validateLoginData(person)) {
+                RandomAccessFile tempFile = new RandomAccessFile("userdata.txt", "rw");
+                String remove;
+                String tempString = "";
+                while ((remove = tempFile.readLine()) != null) {
+                    if(remove.startsWith(String.valueOf(person.getStudentID()))) {
+                        continue;
+                    }
+                    tempString += remove+"\n";
+                }
+                BufferedWriter appender = new BufferedWriter(new FileWriter("userdata.txt"));
+                appender.write(tempString);
+                tempFile.close();
+                appender.close(); 
+            }
             FileWriter writeFile = new FileWriter("userdata.txt", true);
             BufferedWriter output = new BufferedWriter(writeFile);
-            output.write(studentID+";"+password+";"+grades+"\n");
+            output.write(person.getStudentID()+";"+person.getPassword()+";"+person.getGrades()+"\n");
             output.close();
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException("Finner ikke filen");
@@ -60,10 +76,14 @@ public class FileOperations implements FileShell {
         // person.addGrade("TTM4102", 'C');
         // FileOperations fil = new FileOperations(person);
         // fil.saveUserData(person.getStudentID(), person.getPassword(), person.getGrades());
-        Person person2 = new Person(913792, "Test1234!");
-        FileOperations fil2 = new FileOperations(person2);
-        System.out.println(fil2.validateLoginData(person2));
-        fil2.readUserData(person2); 
+        // Person person2 = new Person(913792, "Test1234!");
+        // FileOperations fil2 = new FileOperations(person2);
+        // System.out.println(fil2.validateLoginData(person2));
+        // fil2.readUserData(person2); 
+        Person person = new Person(913792, "Test1234!");
+        FileOperations fil = new FileOperations(person);
+        fil.saveUserData(person);
+
         
     }
 

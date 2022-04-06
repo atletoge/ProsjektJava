@@ -45,7 +45,7 @@
                   <TextField fx:id="fagkode" layoutY="16.0" prefHeight="26.0" prefWidth="131.0" promptText="Legg inn fagkode" />
                   <TextField fx:id="karakter" layoutX="131.0" layoutY="16.0" prefHeight="26.0" prefWidth="123.0" promptText="Karakter (A-F)" />
                   <Button fx:id="leggTil" layoutX="254.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleLeggtil" text="Legg til" />
-                  <Button fx:id="lagre" layoutX="2.0" layoutY="345.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="103.0" text="Lagre" />
+                  <Button fx:id="lagre" layoutX="2.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleLagre" prefHeight="26.0" prefWidth="103.0" text="Lagre" />
                   <Button fx:id="loggUt" layoutX="104.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleLoggUt" prefHeight="26.0" prefWidth="218.0" text="Logg ut" />
                   <ListView fx:id="liste" layoutX="5.0" layoutY="50.0" prefHeight="189.0" prefWidth="310.0" />
                </children>

@@ -5,7 +5,7 @@ import java.util.List;
 public interface FileShell {
     
 
-    void saveUserData(int studentID, String password, List<Course> grades);
+    void saveUserData(Person person);
 
     List<Course> readUserData(Person person);
 

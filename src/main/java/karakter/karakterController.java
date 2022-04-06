@@ -13,7 +13,7 @@ public class KarakterController {
     public TextField epostr, studentidl, studentid,navn,karakter,fagkode;
 
     @FXML
-    public Button loggInn, registrer,lagre,slettAlt,loggUt;
+    public Button loggInn, registrer,lagre,loggUt, leggTil;
 
     @FXML
     private ListView<Course> liste;
@@ -21,6 +21,7 @@ public class KarakterController {
     @FXML
     private PasswordField passordr1, passordr2, passordl;
 
+    private FileOperations fileOperations;
     private Person person;
     private ObservableList<Course> courses = FXCollections.observableArrayList();
 
@@ -38,7 +39,7 @@ public class KarakterController {
         fagkode.setVisible(true);
         karakter.setVisible(true);
         leggTil.setVisible(true);
-        slettAlt.setVisible(true);
+        lagre.setVisible(true);
     }
 
     @FXML
@@ -50,14 +51,14 @@ public class KarakterController {
         karakter.setVisible(false);
         loggUt.setVisible(false);
         leggTil.setVisible(false);
-        slettAlt.setVisible(false);
+        lagre.setVisible(false);
         courses.clear();
     }
 
     @FXML
     public void handleLoggInn() {
         Person person = new Person(Integer.parseInt(studentidl.getText()), passordl.getText());
-        FileOperations fileOperations = new FileOperations(person);
+        this.fileOperations = new FileOperations(person);
         if(fileOperations.validateLoginData(person)) {
             this.person = person;
             courses.addAll(fileOperations.readUserData(person));
@@ -71,6 +72,7 @@ public class KarakterController {
     public void handleRegistrerPress() {
         Person person = new Person(navn.getText(), Integer.parseInt(studentid.getText()), epostr.getText(), passordr1.getText(), passordr2.getText());
         this.person = person;
+        this.fileOperations = new FileOperations(person);
         login();
     }
 
@@ -85,6 +87,11 @@ public class KarakterController {
         courses.clear();
         courses.addAll(person.getGrades());
         showGrades();
+    }
+
+    @FXML
+    public void handleLagre() {
+        fileOperations.saveUserData(person);
     }
 
     @FXML
