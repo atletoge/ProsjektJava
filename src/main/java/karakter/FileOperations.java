@@ -41,29 +41,35 @@ public class FileOperations implements FileShell {
     }
     
     public static void main(String[] args) {
-        Person person = new Person("Atle Tøge", 913732, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
-        person.addGrade("TTM4100", 'B');
-        person.addGrade("TTM4102", 'C');
-        FileOperations fil = new FileOperations(person);
-        fil.saveUserData(person.getStudentID(), person.getPassword(), person.getGrades());
+        // Person person = new Person("Atle Tøge", 913792, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
+        // person.addGrade("TTM4100", 'B');
+        // person.addGrade("TTM4102", 'C');
+        // FileOperations fil = new FileOperations(person);
+        // fil.saveUserData(person.getStudentID(), person.getPassword(), person.getGrades());
+        Person person2 = new Person(918792, "Test1234!");
+        FileOperations fil2 = new FileOperations(person2);
+        System.out.println(fil2.validateLoginData(person2)); 
         
     }
 
     
-    public List<String> readLoginData(Person person) {
+    public boolean validateLoginData(Person person) {
         try {
             Scanner s = new Scanner(new FileReader("userdata.txt"));
-            ArrayList<String> liste = new ArrayList<String>();
             while(s.hasNextLine()) {
+                List<String> liste = new ArrayList();
                 String line = s.nextLine();
-                liste.addAll(line.split(";"));
-                if((Integer.parseInt(liste.get(0)) == person.getStudentID()) && liste.get(1) == person.getPassword()) {
-                    return liste;
+                String[] liste1 = line.split(";");
+                for (String string : liste1) {
+                    liste.add(string);
+                }
+                if((Integer.parseInt(liste.get(0)) == this.person.getStudentID()) && liste.get(1).equals(this.person.getPassword())) {
+                    return true;
                 }
             }
         } catch (Exception e) {
             //TODO: handle exception
         }
-        return null;
+        throw new IllegalArgumentException("Brukeren eksisterer ikke, sjekk innlogging eller registrer deg.");
     }
 }
