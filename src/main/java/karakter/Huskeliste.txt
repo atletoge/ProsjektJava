@@ -1,0 +1,5 @@
+Husk å valider at fag ikke allerede er lagt inn
+Bestem om vi skal fortsette å ha heltallsdivisjon på karakterer (Per nå er det desimaltall)
+Bestem hvordan vi skal gjøre med median, per nå heltallsvisjon, så om det er partall blir det den laveste. Eks 6 karakterer så er det karakter nr 3 som blir valgt
+
+

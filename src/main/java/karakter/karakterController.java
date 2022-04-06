@@ -64,6 +64,8 @@ public class KarakterController {
             courses.addAll(fileOperations.readUserData(person));
             login();
             showGrades();
+        } else {
+            throw new IllegalArgumentException("Brukeren eksisterer ikke, sjekk innlogging eller registrer deg.");
         }
         
     }

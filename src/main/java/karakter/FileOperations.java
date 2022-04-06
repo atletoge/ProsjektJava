@@ -55,13 +55,10 @@ public class FileOperations implements FileShell {
     @Override
     public List<Course> readUserData(Person person) {
         List<Course> courses = new ArrayList<>();
-        //System.out.println(
         String replacedString = oldGrades.replace("[", "").replace("]","").replace("\t","").replace(" ", "");
         String[] gradeArray = replacedString.split(",");
-        System.out.println(gradeArray);
         List<String> gradeList = Arrays.asList(gradeArray);
         for (int i = 0; i < gradeList.size(); i+=2) {
-            //courses.add(person.addGrade(gradeList.get(i), gradeList.get(i+1).charAt(0));)
             String course = gradeList.get(i);
             char grade = gradeList.get(i+1).charAt(0);
             person.addGrade(course, grade);
@@ -80,9 +77,9 @@ public class FileOperations implements FileShell {
         // FileOperations fil2 = new FileOperations(person2);
         // System.out.println(fil2.validateLoginData(person2));
         // fil2.readUserData(person2); 
-        Person person = new Person(913792, "Test1234!");
-        FileOperations fil = new FileOperations(person);
-        fil.saveUserData(person);
+        // Person person = new Person(913792, "Test1234!");
+        // FileOperations fil = new FileOperations(person);
+        // fil.saveUserData(person);
 
         
     }
@@ -105,7 +102,7 @@ public class FileOperations implements FileShell {
             }
         } catch (Exception e) {
             //TODO: handle exception
-        }
-        throw new IllegalArgumentException("Brukeren eksisterer ikke, sjekk innlogging eller registrer deg.");
+        } return false;
+        
     }
 }
