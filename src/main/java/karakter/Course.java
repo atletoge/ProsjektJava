@@ -58,7 +58,7 @@ public class Course {
 
     @Override
     public String toString() {
-        return courseCode+";\t\t"+grade;
+        return courseCode+",\t\t"+grade;
     }
 
     public static void main(String[] args) {

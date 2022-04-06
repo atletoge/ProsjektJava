@@ -13,7 +13,7 @@ public class KarakterController {
     public TextField epostr, studentidl, studentid,navn,karakter,fagkode;
 
     @FXML
-    public Button loggInn, registrer,leggTil,slettAlt,loggUt;
+    public Button loggInn, registrer,lagre,slettAlt,loggUt;
 
     @FXML
     private ListView<Course> liste;
@@ -57,8 +57,14 @@ public class KarakterController {
     @FXML
     public void handleLoggInn() {
         Person person = new Person(Integer.parseInt(studentidl.getText()), passordl.getText());
-        this.person = person;
-        login();
+        FileOperations fileOperations = new FileOperations(person);
+        if(fileOperations.validateLoginData(person)) {
+            this.person = person;
+            courses.addAll(fileOperations.readUserData(person));
+            login();
+            showGrades();
+        }
+        
     }
 
     @FXML

@@ -3,6 +3,7 @@ package karakter;
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,6 +13,7 @@ public class FileOperations implements FileShell {
     Person person;
     int studentID;
     String password;
+    String oldGrades;
 
     public FileOperations(Person person) {
         this.person = person;
@@ -35,9 +37,21 @@ public class FileOperations implements FileShell {
     }
 
     @Override
-    public List<Course> readUserData(int studentID, String password) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Course> readUserData(Person person) {
+        List<Course> courses = new ArrayList<>();
+        //System.out.println(
+        String replacedString = oldGrades.replace("[", "").replace("]","").replace("\t","").replace(" ", "");
+        String[] gradeArray = replacedString.split(",");
+        System.out.println(gradeArray);
+        List<String> gradeList = Arrays.asList(gradeArray);
+        for (int i = 0; i < gradeList.size(); i+=2) {
+            //courses.add(person.addGrade(gradeList.get(i), gradeList.get(i+1).charAt(0));)
+            String course = gradeList.get(i);
+            char grade = gradeList.get(i+1).charAt(0);
+            person.addGrade(course, grade);
+        } System.out.println(person.getGrades());
+        
+        return person.getGrades();
     }
     
     public static void main(String[] args) {
@@ -46,9 +60,10 @@ public class FileOperations implements FileShell {
         // person.addGrade("TTM4102", 'C');
         // FileOperations fil = new FileOperations(person);
         // fil.saveUserData(person.getStudentID(), person.getPassword(), person.getGrades());
-        Person person2 = new Person(918792, "Test1234!");
+        Person person2 = new Person(913792, "Test1234!");
         FileOperations fil2 = new FileOperations(person2);
-        System.out.println(fil2.validateLoginData(person2)); 
+        System.out.println(fil2.validateLoginData(person2));
+        fil2.readUserData(person2); 
         
     }
 
@@ -64,6 +79,7 @@ public class FileOperations implements FileShell {
                     liste.add(string);
                 }
                 if((Integer.parseInt(liste.get(0)) == this.person.getStudentID()) && liste.get(1).equals(this.person.getPassword())) {
+                    this.oldGrades = liste.get(2);
                     return true;
                 }
             }
