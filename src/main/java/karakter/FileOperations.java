@@ -2,6 +2,7 @@ package karakter;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -48,9 +49,21 @@ public class FileOperations implements FileShell {
         
     }
 
-    @Override
+    
     public List<String> readLoginData(Person person) {
-        
+        try {
+            Scanner s = new Scanner(new FileReader("userdata.txt"));
+            ArrayList<String> liste = new ArrayList<String>();
+            while(s.hasNextLine()) {
+                String line = s.nextLine();
+                liste.addAll(line.split(";"));
+                if((Integer.parseInt(liste.get(0)) == person.getStudentID()) && liste.get(1) == person.getPassword()) {
+                    return liste;
+                }
+            }
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
         return null;
     }
 }

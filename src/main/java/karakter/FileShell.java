@@ -9,5 +9,5 @@ public interface FileShell {
 
     List<Course> readUserData(int studentID, String password);
 
-    List<String> readLoginData(Person person);
+    //List<String> readLoginData(Person person);
 }
