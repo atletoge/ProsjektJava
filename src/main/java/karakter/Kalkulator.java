@@ -9,6 +9,8 @@ public class Kalkulator {
 
     //private String grades;
     private List<Character> gradeList = new ArrayList<>();
+    private String median;
+    private String meanValue;
 
     public Kalkulator(Person person) {
         String grades = person.getGrades().toString().replace("[", "").replace("]","").replace("\t","").replace(" ", "");
@@ -16,10 +18,28 @@ public class Kalkulator {
         List<String> tempList = Arrays.asList(gradeArray);
         for (int i = 1; i < tempList.size(); i+=2) {
             this.gradeList.add(tempList.get(i).charAt(0));
-        }System.out.println(gradeList);
+        }//System.out.println(gradeList);
     }
 
-    private double calculateMeanValue(List<Character> gradeList) {
+    public String getMeanValue() {
+        return meanValue;
+    }
+
+    public void setMeanValue(List<Character> gradeList) {
+        Double meanValue = calculateMeanValue(gradeList);
+        this.meanValue = String.valueOf(meanValue);
+    }
+
+    public String getMedian() {
+        return median;
+    }
+
+    public void setMedian(List<Character> gradeList) {
+        char median = calculateMedian(gradeList);
+        this.median = String.valueOf(median);
+    }
+
+    public double calculateMeanValue(List<Character> gradeList) {
         double sum = 0;
         double size = Double.valueOf(gradeList.size());
         for (Character character : gradeList) {
@@ -31,7 +51,7 @@ public class Kalkulator {
         return (71 - chr);
     }
 
-    private char calculateMedian(List<Character> gradeList) {
+    public char calculateMedian(List<Character> gradeList) {
         List<Character> sortedList = gradeList.stream().sorted().collect(Collectors.toList());
         return sortedList.get(sortedList.size()/2);
     }
@@ -39,6 +59,7 @@ public class Kalkulator {
     public List<Character> getGradeList() {
         return gradeList;
     }
+    
 
 
     public static void main(String[] args) {
@@ -50,8 +71,12 @@ public class Kalkulator {
         person4.addGrade("TTM4222", 'A');
         person4.addGrade("TTM4132", 'B');
         Kalkulator kalkulator = new Kalkulator(person4);
-        System.out.println(kalkulator.calculateMedian(kalkulator.getGradeList()));
-        System.out.println(kalkulator.calculateMeanValue(kalkulator.getGradeList()));
+        // System.out.println(kalkulator.calculateMedian(kalkulator.getGradeList()));
+        // System.out.println(kalkulator.calculateMeanValue(kalkulator.getGradeList()));
+        kalkulator.setMeanValue(kalkulator.getGradeList());
+        kalkulator.setMedian(kalkulator.getGradeList());
+        System.out.println(kalkulator.getMeanValue());
+        System.out.println(kalkulator.getMedian());
     }
 
 }

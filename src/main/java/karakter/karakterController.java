@@ -4,13 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class KarakterController {
     @FXML
-    public TextField epostr, studentidl, studentid,navn,karakter,fagkode;
+    public TextField epostr, studentidl, studentid,navn,karakter,fagkode, gjennomsnitt, median;
 
     @FXML
     public Button loggInn, registrer,lagre,loggUt, leggTil;
@@ -21,9 +22,13 @@ public class KarakterController {
     @FXML
     private PasswordField passordr1, passordr2, passordl;
 
+    @FXML
+    public Label mlabel, glabel;
+
     private FileOperations fileOperations;
     private Person person;
     private ObservableList<Course> courses = FXCollections.observableArrayList();
+    private Kalkulator kalkulator;
 
     @FXML
     public void initialize() {
@@ -40,6 +45,10 @@ public class KarakterController {
         karakter.setVisible(true);
         leggTil.setVisible(true);
         lagre.setVisible(true);
+        gjennomsnitt.setVisible(true);
+        median.setVisible(true);
+        mlabel.setVisible(true);
+        glabel.setVisible(true);
     }
 
     @FXML
@@ -53,12 +62,19 @@ public class KarakterController {
         leggTil.setVisible(false);
         lagre.setVisible(false);
         courses.clear();
+        gjennomsnitt.clear();
+        gjennomsnitt.setVisible(false);
+        median.clear();
+        median.setVisible(false);
+        mlabel.setVisible(false);
+        glabel.setVisible(false);
     }
 
     @FXML
     public void handleLoggInn() {
         Person person = new Person(Integer.parseInt(studentidl.getText()), passordl.getText());
         this.fileOperations = new FileOperations(person);
+        this.kalkulator = new Kalkulator(person);
         if(fileOperations.validateLoginData(person)) {
             this.person = person;
             courses.addAll(fileOperations.readUserData(person));
@@ -67,6 +83,8 @@ public class KarakterController {
         } else {
             throw new IllegalArgumentException("Brukeren eksisterer ikke, sjekk innlogging eller registrer deg.");
         }
+        handleMeanValue();
+        handleMedian();
         
     }
 
@@ -75,8 +93,10 @@ public class KarakterController {
         Person person = new Person(navn.getText(), Integer.parseInt(studentid.getText()), epostr.getText(), passordr1.getText(), passordr2.getText());
         this.person = person;
         this.fileOperations = new FileOperations(person);
+        this.kalkulator = new Kalkulator(person);
         login();
     }
+    
 
     @FXML
     public void handleLoggUt() {
@@ -89,6 +109,8 @@ public class KarakterController {
         courses.clear();
         courses.addAll(person.getGrades());
         showGrades();
+        handleMeanValue();
+        handleMedian();
     }
 
     @FXML
@@ -101,6 +123,15 @@ public class KarakterController {
         liste.setItems(courses);
     }
     
+    @FXML
+    public void handleMedian() {
+        median.setText(Character.toString(this.kalkulator.calculateMedian(this.kalkulator.getGradeList())));
+    }
+    
+    @FXML
+    public void handleMeanValue() {
+        gjennomsnitt.setText(String.valueOf(this.kalkulator.calculateMeanValue(this.kalkulator.getGradeList())));
+    }
 
-
+    
 }
