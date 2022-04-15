@@ -53,6 +53,7 @@
                   <Label fx:id="mlabel" layoutX="160.0" layoutY="274.0" prefHeight="17.0" prefWidth="150.0" text="Mediankarakter:" />
                   <Label fx:id="gjennomsnitt" layoutX="4.0" layoutY="298.0" prefHeight="26.0" prefWidth="123.0" />
                   <Label fx:id="median" layoutX="163.0" layoutY="303.0" prefHeight="26.0" prefWidth="150.0" />
+                  <Button fx:id="slett" layoutX="5.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="26.0" prefWidth="123.0" text="Slett all historikk" />
                </children>
             </AnchorPane>
         </items>

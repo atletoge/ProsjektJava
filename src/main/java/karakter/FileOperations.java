@@ -58,11 +58,14 @@ public class FileOperations implements FileShell {
         String replacedString = oldGrades.replace("[", "").replace("]","").replace("\t","").replace(" ", "");
         String[] gradeArray = replacedString.split(",");
         List<String> gradeList = Arrays.asList(gradeArray);
-        for (int i = 0; i < gradeList.size(); i+=2) {
-            String course = gradeList.get(i);
-            char grade = gradeList.get(i+1).charAt(0);
-            person.addGrade(course, grade);
-        } System.out.println(person.getGrades());
+        if(gradeList.size() > 1) {
+            for (int i = 0; i < gradeList.size(); i+=2) {
+                String course = gradeList.get(i);
+                char grade = gradeList.get(i+1).charAt(0);
+                person.addGrade(course, grade);
+            } 
+        }
+         //System.out.println(person.getGrades());
         
         return person.getGrades();
     }

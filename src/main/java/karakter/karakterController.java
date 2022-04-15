@@ -14,7 +14,7 @@ public class KarakterController {
     public TextField epostr, studentidl, studentid,navn,karakter,fagkode;
 
     @FXML
-    public Button loggInn, registrer,lagre,loggUt, leggTil;
+    public Button loggInn, registrer,lagre,loggUt, leggTil, slett;
 
     @FXML
     private ListView<Course> liste;
@@ -124,18 +124,30 @@ public class KarakterController {
     
     @FXML
     public void handleMedian() {
-        this.kalkulator = new Kalkulator(this.person);
-        this.kalkulator.setMedian(this.kalkulator.getGradeList());
-        this.medianString = this.kalkulator.getMedian();
-        median.setText(medianString);
+        if(this.person.getGrades().size() > 0) {
+            this.kalkulator = new Kalkulator(this.person);
+            this.kalkulator.setMedian(this.kalkulator.getGradeList());
+            this.medianString = this.kalkulator.getMedian();
+            median.setText(medianString);
+        }
+        
     }
     
     @FXML
     public void handleMeanValue() {
-        this.kalkulator = new Kalkulator(this.person);
-        this.kalkulator.setMeanValue(this.kalkulator.getGradeList());
-        this.meanValueString = this.kalkulator.getMeanValue();
-        gjennomsnitt.setText(meanValueString);
+        if(this.person.getGrades().size() > 0) {
+            this.kalkulator = new Kalkulator(this.person);
+            this.kalkulator.setMeanValue(this.kalkulator.getGradeList());
+            this.meanValueString = this.kalkulator.getMeanValue();
+            gjennomsnitt.setText(meanValueString);
+        }
+    }
+
+    @FXML
+    public void handleDelete() {
+        this.person.deleteHistory();
+        logout();
+        login();
     }
 
     

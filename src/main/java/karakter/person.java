@@ -1,5 +1,6 @@
 package karakter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -117,11 +118,30 @@ public class Person {
     }
 
     public void addGrade(String course, char grade) {
-        Course kurs = new Course(course,grade);
-        grades.add(kurs);
+        if(validateGrade(course)){
+            Course kurs = new Course(course,grade);
+            grades.add(kurs);
+        } else {
+            throw new IllegalArgumentException(course+" er allerede lagt til, slett alt om du vil begynne på nytt");
+        }
+        
     }
 
-    //public addCourse(Course course)
+    private boolean validateGrade(String course) {
+        String grades = this.getGrades().toString().replace("[", "").replace("]","").replace("\t","").replace(" ", "");
+        String[] gradeArray = grades.split(",");
+        List<String> tempList = Arrays.asList(gradeArray);
+        for (int i = 0; i < tempList.size(); i+= 2) {
+            if(tempList.get(i).equals(course)) {
+                return false;
+            }
+        } return true;
+    }
+
+
+    public void deleteHistory() {
+        this.grades = new ArrayList();
+    }
 
     public static void main(String[] args) {
         // Person person = new Person("Atle Toge", 911002, "atleto@stud.ntnu.no", "Test1234!", "Test1234!");
