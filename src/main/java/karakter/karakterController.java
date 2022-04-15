@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 
 public class KarakterController {
     @FXML
-    public TextField epostr, studentidl, studentid,navn,karakter,fagkode, gjennomsnitt, median;
+    public TextField epostr, studentidl, studentid,navn,karakter,fagkode;
 
     @FXML
     public Button loggInn, registrer,lagre,loggUt, leggTil;
@@ -23,12 +23,13 @@ public class KarakterController {
     private PasswordField passordr1, passordr2, passordl;
 
     @FXML
-    public Label mlabel, glabel;
+    public Label mlabel, glabel, median, gjennomsnitt;
 
     private FileOperations fileOperations;
     private Person person;
     private ObservableList<Course> courses = FXCollections.observableArrayList();
     private Kalkulator kalkulator;
+    private String medianString, meanValueString;
 
     @FXML
     public void initialize() {
@@ -62,9 +63,9 @@ public class KarakterController {
         leggTil.setVisible(false);
         lagre.setVisible(false);
         courses.clear();
-        gjennomsnitt.clear();
+        gjennomsnitt.setText("");
         gjennomsnitt.setVisible(false);
-        median.clear();
+        median.setText("");
         median.setVisible(false);
         mlabel.setVisible(false);
         glabel.setVisible(false);
@@ -74,7 +75,6 @@ public class KarakterController {
     public void handleLoggInn() {
         Person person = new Person(Integer.parseInt(studentidl.getText()), passordl.getText());
         this.fileOperations = new FileOperations(person);
-        this.kalkulator = new Kalkulator(person);
         if(fileOperations.validateLoginData(person)) {
             this.person = person;
             courses.addAll(fileOperations.readUserData(person));
@@ -92,8 +92,7 @@ public class KarakterController {
     public void handleRegistrerPress() {
         Person person = new Person(navn.getText(), Integer.parseInt(studentid.getText()), epostr.getText(), passordr1.getText(), passordr2.getText());
         this.person = person;
-        this.fileOperations = new FileOperations(person);
-        this.kalkulator = new Kalkulator(person);
+        this.fileOperations = new FileOperations(this.person);
         login();
     }
     
@@ -125,12 +124,18 @@ public class KarakterController {
     
     @FXML
     public void handleMedian() {
-        median.setText(Character.toString(this.kalkulator.calculateMedian(this.kalkulator.getGradeList())));
+        this.kalkulator = new Kalkulator(this.person);
+        this.kalkulator.setMedian(this.kalkulator.getGradeList());
+        this.medianString = this.kalkulator.getMedian();
+        median.setText(medianString);
     }
     
     @FXML
     public void handleMeanValue() {
-        gjennomsnitt.setText(String.valueOf(this.kalkulator.calculateMeanValue(this.kalkulator.getGradeList())));
+        this.kalkulator = new Kalkulator(this.person);
+        this.kalkulator.setMeanValue(this.kalkulator.getGradeList());
+        this.meanValueString = this.kalkulator.getMeanValue();
+        gjennomsnitt.setText(meanValueString);
     }
 
     

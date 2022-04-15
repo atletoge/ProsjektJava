@@ -49,10 +49,10 @@
                   <Button fx:id="lagre" layoutX="2.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleLagre" prefHeight="26.0" prefWidth="103.0" text="Lagre" />
                   <Button fx:id="loggUt" layoutX="104.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleLoggUt" prefHeight="26.0" prefWidth="218.0" text="Logg ut" />
                   <ListView fx:id="liste" layoutX="5.0" layoutY="50.0" prefHeight="189.0" prefWidth="310.0" />
-                  <TextField fx:id="gjennomsnitt" editable="false" layoutY="291.0" />
                   <Label fx:id="glabel" layoutY="274.0" prefHeight="17.0" prefWidth="160.0" text="Gjennomsnittskarakter:" />
                   <Label fx:id="mlabel" layoutX="160.0" layoutY="274.0" prefHeight="17.0" prefWidth="150.0" text="Mediankarakter:" />
-                  <TextField fx:id="median" editable="false" layoutX="161.0" layoutY="292.0" prefHeight="26.0" prefWidth="150.0" />
+                  <Label fx:id="gjennomsnitt" layoutX="4.0" layoutY="298.0" prefHeight="26.0" prefWidth="123.0" />
+                  <Label fx:id="median" layoutX="163.0" layoutY="303.0" prefHeight="26.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
         </items>

@@ -26,8 +26,8 @@ public class Kalkulator {
     }
 
     public void setMeanValue(List<Character> gradeList) {
-        Double meanValue = calculateMeanValue(gradeList);
-        this.meanValue = String.valueOf(meanValue);
+        Double meanValue1 = calculateMeanValue(gradeList);
+        this.meanValue = String.valueOf(meanValue1);
     }
 
     public String getMedian() {
