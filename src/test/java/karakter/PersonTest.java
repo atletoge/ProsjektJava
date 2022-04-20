@@ -16,13 +16,24 @@ public class PersonTest {
     
 
     @Test
-    @DisplayName("Test konstruktør for ny student")
+    @DisplayName("Test konstruktør for registrering")
     public void testConstructor() {
         Person person = new Person("Atle Tøge", 234591, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
         assertEquals("Atle Tøge", person.getName());
         assertEquals(234591, person.getStudentID());
         assertEquals("atletø@stud.ntnu.no", person.getEmail());
         assertEquals("Test1234!", person.getPassword());
+        FileOperations fileOperations = new FileOperations(person);
+        fileOperations.saveUserData(person);
+        assertThrows(IllegalArgumentException.class, () -> {
+            Person person1 = new Person("Test Testesen", 234591, "testte@stud.ntnu.no", "Test1234!", "Test1234!");
+        }, "Kan ikke lage ny bruker når studentID allerede er i bruk");
+    }
+
+    @Test
+    @DisplayName("Test logg på konstruktør")
+    public void testSecondConstructor() {
+
     }
     
     @Test
@@ -103,6 +114,8 @@ public class PersonTest {
             person.addGrade("TTM4100", 'C');
         }, "Du kan ikke legge til samem fag to ganger");
     }
+
+    //Husk å sjekke om du må legge til test for delete history
 
 }
 

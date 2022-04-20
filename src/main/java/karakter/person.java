@@ -138,7 +138,7 @@ public class Person {
         } return true;
     }
 
-
+    //Følte ikke vi trengte testkode for denne. 
     public void deleteHistory() {
         this.grades = new ArrayList();
     }
