@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
@@ -83,6 +86,22 @@ public class PersonTest {
             Person person5 = new Person("Atle Tøge", 234591, "atletø@stud.ntnu.no", "Test12345!!!2222221111111", "Test12345!!!2222221111111");
         }, "Passordet kan ikke overstige 20 tegn");
 
+    }
+
+    @Test
+    @DisplayName("Testing av å legge til fag")
+    public void testAddGrade() {
+        Person person = new Person("Atle Tøge", 234591, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
+        person.addGrade("TTM4100", 'A');
+        person.addGrade("TTM4102", 'B');
+        List<Course> testList;
+        testList = new ArrayList<>();
+        testList.add(new Course("TTM4100", 'A'));
+        testList.add(new Course("TTM4102", 'B'));
+        assertEquals(testList.toString(), person.getGrades().toString());
+        assertThrows(IllegalArgumentException.class, () -> {
+            person.addGrade("TTM4100", 'C');
+        }, "Du kan ikke legge til samem fag to ganger");
     }
 
 }
