@@ -44,7 +44,7 @@ public class Person {
         }
     }
     public List<Course> getGrades() {
-        return grades;
+        return new ArrayList<Course>(this.grades); //returnerer en kopi av lista, ikke originalen (innkapsling osv.)
     }
 
     private void setName(String name) {
@@ -144,11 +144,11 @@ public class Person {
     }
 
     public static void main(String[] args) {
-        // Person person = new Person("Atle Toge", 911002, "atleto@stud.ntnu.no", "Test1234!", "Test1234!");
+        Person person = new Person("Atle Toge", 911002, "atleto@stud.ntnu.no", "Test1234!", "Test1234!");
         // //System.out.println(person.getStudentID());
-        // person.addGrade("TTM4100", 'B');
-        // person.addGrade("TTM4102", 'C');
-        // System.out.println(person.getGrades()); 
+        person.addGrade("TTM4100", 'B');
+        person.addGrade("TTM4102", 'C');
+        System.out.println(person.getGrades()); 
         Person person4 = new Person("Atle Tøge", 910792, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
     }
 
