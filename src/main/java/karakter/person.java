@@ -30,8 +30,8 @@ public class Person {
 
     //Dummy konstruktør for fxml testing
     public Person(int studentID, String password) {
-        this.studentID = studentID;
-        this.password = password;
+        setStudentID(studentID);
+        setPassword(password, password);
         this.grades = new ArrayList();
     }
 
