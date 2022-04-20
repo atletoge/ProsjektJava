@@ -27,13 +27,13 @@ public class PersonTest {
         fileOperations.saveUserData(person);
         assertThrows(IllegalArgumentException.class, () -> {
             Person person1 = new Person("Test Testesen", 234591, "testte@stud.ntnu.no", "Test1234!", "Test1234!");
-        }, "Kan ikke lage ny bruker når studentID allerede er i bruk");
+        }, "Skal throwe her pga brukeren allerede er i systemet med et annet passord");
     }
 
     @Test
     @DisplayName("Test logg på konstruktør")
     public void testSecondConstructor() {
-
+        // Denne må fikses
     }
     
     @Test
@@ -41,10 +41,10 @@ public class PersonTest {
     public void testName() {
         assertThrows(NullPointerException.class, () -> {
             Person person2 = new Person(null, 234591, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
-        }, "Navn kan ikke være tomt");
+        }, "Skal få error her siden navn er tomt");
         assertThrows(IllegalArgumentException.class, () -> {
             Person person3 = new Person("A", 234591, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
-        }, "Navnet må bestå av minst 2 bokstaver");
+        }, "Skal få error her siden navnet er under to tegn");
     }
 
     @Test
@@ -61,7 +61,7 @@ public class PersonTest {
         }, "Eposten må være på formen atletø@stud.ntnu.no");
         assertThrows(NullPointerException.class, () -> {
             Person person3 = new Person("Atle Tøge", 234591, null, "Test1234!", "Test1234!");
-        }, "Eposten kan ikke være tom");
+        }, "Eposten skal ikke kunne være tom");
     }
 
     @Test

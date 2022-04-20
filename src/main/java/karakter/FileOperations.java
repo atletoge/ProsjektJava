@@ -17,7 +17,9 @@ public class FileOperations implements FileShell {
     String oldGrades;
 
     public FileOperations(Person person) {
-        this.person = person;
+            this.person = person;
+        
+        
     }
 
     @Override
@@ -68,23 +70,6 @@ public class FileOperations implements FileShell {
          //System.out.println(person.getGrades());
         
         return person.getGrades();
-    }
-    
-    public static void main(String[] args) {
-        // Person person = new Person("Atle Tøge", 913792, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
-        // person.addGrade("TTM4100", 'B');
-        // person.addGrade("TTM4102", 'C');
-        // FileOperations fil = new FileOperations(person);
-        // fil.saveUserData(person.getStudentID(), person.getPassword(), person.getGrades());
-        // Person person2 = new Person(913792, "Test1234!");
-        // FileOperations fil2 = new FileOperations(person2);
-        // System.out.println(fil2.validateLoginData(person2));
-        // fil2.readUserData(person2); 
-        // Person person = new Person(913792, "Test1234!");
-        // FileOperations fil = new FileOperations(person);
-        // fil.saveUserData(person);
-
-        
     }
 
     
