@@ -17,14 +17,6 @@ public class Course {
     }
 
 
-    //public List<Character> getGrades() {
-        //return grades;
-    //}
-
-    // private void addGrades(char grade) {
-    //     grades.add(grade);
-    // }
-
     private boolean validateCourseCode(String courseCode) {
         if(courseCode.matches("^([A-Z]{3}[0-9]{4})")) {
             return true;
@@ -47,7 +39,7 @@ public class Course {
             return true;
         } throw new IllegalArgumentException("Grade is not valid, must be A-F ");
     }
-    public void setGrade(char grade) {
+    private void setGrade(char grade) {
         validateGrade(grade);
         this.grade = grade;
     }
