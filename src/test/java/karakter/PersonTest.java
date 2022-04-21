@@ -33,7 +33,16 @@ public class PersonTest {
     @Test
     @DisplayName("Test logg på konstruktør")
     public void testSecondConstructor() {
-        // Denne må fikses
+        Person person = new Person("Atle Tøge", 234691, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
+        FileOperations fileOperations = new FileOperations(person);
+        fileOperations.saveUserData(person);
+        Person person1 = new Person(234691, "Test1234!");
+        assertThrows(IllegalArgumentException.class, () -> {
+            Person person2 = new Person(234691, "Test12345!");
+        }, "Skal throwe når passordet ikke stemmer med det som er lagret");
+        assertThrows(IllegalArgumentException.class, () -> {
+            Person person3 = new Person(339102, "Test1234!");
+        }, "Skal throwe når brukeren aldri har vært registrert før ");
     }
     
     @Test

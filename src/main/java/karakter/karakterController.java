@@ -75,14 +75,11 @@ public class KarakterController {
     public void handleLoggInn() {
         Person person = new Person(Integer.parseInt(studentidl.getText()), passordl.getText());
         this.fileOperations = new FileOperations(person);
-        if(fileOperations.validateLoginData(person)) {
-            this.person = person;
-            courses.addAll(fileOperations.readUserData(person));
-            login();
-            showGrades();
-        } else {
-            throw new IllegalArgumentException("Brukeren eksisterer ikke, sjekk innlogging eller registrer deg.");
-        }
+        this.person = person;
+        fileOperations.validateLoginData(person);
+        courses.addAll(fileOperations.readUserData(person));
+        login();
+        showGrades();
         handleMeanValue();
         handleMedian();
         

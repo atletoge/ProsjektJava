@@ -32,6 +32,10 @@ public class Person {
     public Person(int studentID, String password) {
         setStudentID(studentID);
         setPassword(password, password);
+        FileOperations fileOperations = new FileOperations(this);
+        if(!fileOperations.validateLoginData(this)) {
+            throw new IllegalArgumentException("Feil studentID og passord, prøv på nytt eller registrer deg.");
+        }
         this.grades = new ArrayList();
     }
 
