@@ -39,21 +39,29 @@ public class Kalkulator {
         this.median = String.valueOf(median);
     }
 
-    public double calculateMeanValue(List<Character> gradeList) {
-        double sum = 0;
-        double size = Double.valueOf(gradeList.size());
-        for (Character character : gradeList) {
-            sum += toNumber(character);
-        } return  sum/size;
+    private double calculateMeanValue(List<Character> gradeList) {
+        if(gradeList.size() > 0) {
+            double sum = 0;
+            double size = Double.valueOf(gradeList.size());
+            for (Character character : gradeList) {
+                sum += toNumber(character);
+            } return  sum/size;
+        } return 0.0;
     }
 
+    // Tror ikke denne trenger å testes, bedre å ha den som private. Blir indirekte testet i calculatemeanvalue
     private int toNumber(char chr) {
         return (71 - chr);
     }
 
-    public char calculateMedian(List<Character> gradeList) {
-        List<Character> sortedList = gradeList.stream().sorted().collect(Collectors.toList());
-        return sortedList.get(sortedList.size()/2);
+    
+    private char calculateMedian(List<Character> gradeList) {
+        if(gradeList.size() > 0) {
+            List<Character> sortedList = gradeList.stream().sorted().collect(Collectors.toList());
+            // Returnerer tallet på index nr liste heldividert på 2 (Runder ned på .5)
+            return sortedList.get(sortedList.size()/2);
+        } return '0';
+        
     }
 
     public List<Character> getGradeList() {
@@ -71,12 +79,14 @@ public class Kalkulator {
         person4.addGrade("TTM4222", 'A');
         person4.addGrade("TTM4132", 'B');
         Kalkulator kalkulator = new Kalkulator(person4);
-        // System.out.println(kalkulator.calculateMedian(kalkulator.getGradeList()));
-        // System.out.println(kalkulator.calculateMeanValue(kalkulator.getGradeList()));
-        kalkulator.setMeanValue(kalkulator.getGradeList());
-        kalkulator.setMedian(kalkulator.getGradeList());
-        System.out.println(kalkulator.getMeanValue());
-        System.out.println(kalkulator.getMedian());
+        System.out.println(kalkulator.getGradeList());
+
+        // // System.out.println(kalkulator.calculateMedian(kalkulator.getGradeList()));
+        // // System.out.println(kalkulator.calculateMeanValue(kalkulator.getGradeList()));
+        // kalkulator.setMeanValue(kalkulator.getGradeList());
+        // kalkulator.setMedian(kalkulator.getGradeList());
+        // System.out.println(kalkulator.getMeanValue());
+        // System.out.println(kalkulator.getMedian());
     }
 
 }

@@ -7,9 +7,7 @@ import java.util.regex.Pattern;
 public class Course {
     
     private String courseCode;
-    //private String kategori;
     private char grade;
-    //private List<Character> grades;
 
     public Course(String courseCode, char grade){
         setCourseCode(courseCode);

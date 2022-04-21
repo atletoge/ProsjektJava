@@ -53,4 +53,6 @@ public class CourseTest {
         }, "Karakteren må være mellom A-F");
         
     }
+
+    
 }

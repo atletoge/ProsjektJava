@@ -121,23 +121,23 @@ public class KarakterController {
     
     @FXML
     public void handleMedian() {
-        if(this.person.getGrades().size() > 0) {
-            this.kalkulator = new Kalkulator(this.person);
-            this.kalkulator.setMedian(this.kalkulator.getGradeList());
-            this.medianString = this.kalkulator.getMedian();
-            median.setText(medianString);
-        }
+        // if(this.person.getGrades().size() > 0) {
+        this.kalkulator = new Kalkulator(this.person);
+        this.kalkulator.setMedian(this.kalkulator.getGradeList());
+        this.medianString = this.kalkulator.getMedian();
+        median.setText(medianString);
+        // }
         
     }
     
     @FXML
     public void handleMeanValue() {
-        if(this.person.getGrades().size() > 0) {
-            this.kalkulator = new Kalkulator(this.person);
-            this.kalkulator.setMeanValue(this.kalkulator.getGradeList());
-            this.meanValueString = this.kalkulator.getMeanValue();
-            gjennomsnitt.setText(meanValueString);
-        }
+        // if(this.person.getGrades().size() > 0) {
+        this.kalkulator = new Kalkulator(this.person);
+        this.kalkulator.setMeanValue(this.kalkulator.getGradeList());
+        this.meanValueString = this.kalkulator.getMeanValue();
+        gjennomsnitt.setText(meanValueString);
+        // }
     }
 
     @FXML
