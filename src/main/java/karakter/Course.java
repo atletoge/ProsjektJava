@@ -50,9 +50,4 @@ public class Course {
     public String toString() {
         return courseCode+",\t\t"+grade;
     }
-
-    public static void main(String[] args) {
-        Course test = new Course("TMA4100", 'A');
-        System.out.println(test.getGrade());
-    }
 }  

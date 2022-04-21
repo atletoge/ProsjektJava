@@ -18,7 +18,7 @@ public class Kalkulator {
         List<String> tempList = Arrays.asList(gradeArray);
         for (int i = 1; i < tempList.size(); i+=2) {
             this.gradeList.add(tempList.get(i).charAt(0));
-        }//System.out.println(gradeList);
+        }
     }
 
     public String getMeanValue() {
@@ -66,27 +66,6 @@ public class Kalkulator {
 
     public List<Character> getGradeList() {
         return gradeList;
-    }
-    
-
-
-    public static void main(String[] args) {
-        Person person4 = new Person("Atle Tøge", 910792, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
-        person4.addGrade("TTM4100", 'C');
-        person4.addGrade("TTM4102", 'B');
-        person4.addGrade("TTM4105", 'A');
-        person4.addGrade("TTM4122", 'B');
-        person4.addGrade("TTM4222", 'A');
-        person4.addGrade("TTM4132", 'B');
-        Kalkulator kalkulator = new Kalkulator(person4);
-        System.out.println(kalkulator.getGradeList());
-
-        // // System.out.println(kalkulator.calculateMedian(kalkulator.getGradeList()));
-        // // System.out.println(kalkulator.calculateMeanValue(kalkulator.getGradeList()));
-        // kalkulator.setMeanValue(kalkulator.getGradeList());
-        // kalkulator.setMedian(kalkulator.getGradeList());
-        // System.out.println(kalkulator.getMeanValue());
-        // System.out.println(kalkulator.getMedian());
     }
 
 }
