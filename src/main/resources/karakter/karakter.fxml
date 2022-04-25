@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="544.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="karakter.KarakterController">
    <children>
@@ -23,6 +24,7 @@
                               <TextField fx:id="studentidl" layoutX="5.0" layoutY="8.0" prefHeight="36.0" prefWidth="211.0" promptText="Skriv inn studentid" />
                               <PasswordField fx:id="passordl" layoutX="5.0" layoutY="44.0" prefHeight="39.0" prefWidth="210.0" promptText="Skriv inn passord" />
                               <Button fx:id="loggInn" layoutX="5.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleLoggInn" prefHeight="26.0" prefWidth="211.0" text="Logg inn" />
+                              <Label fx:id="loggInnLabel" layoutX="8.0" layoutY="83.0" prefHeight="32.0" prefWidth="206.0" textFill="#dd0c0c" />
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
@@ -30,11 +32,26 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0">
                            <children>
-                              <TextField fx:id="navn" layoutY="2.0" prefHeight="26.0" prefWidth="208.0" promptText="Navn" />
-                              <TextField fx:id="studentid" layoutX="1.0" layoutY="28.0" prefHeight="26.0" prefWidth="203.0" promptText="StudentID" />
-                              <TextField fx:id="epostr" layoutX="1.0" layoutY="54.0" prefHeight="26.0" prefWidth="203.0" promptText="Skrv inn e-post" />
-                              <PasswordField fx:id="passordr1" layoutX="2.0" layoutY="78.0" prefHeight="26.0" prefWidth="197.0" promptText="Skriv inn passord" />
-                              <PasswordField fx:id="passordr2" layoutX="2.0" layoutY="104.0" prefHeight="26.0" prefWidth="197.0" promptText="Skriv inn passord" />
+                              <TextField fx:id="navn" layoutY="2.0" prefHeight="26.0" prefWidth="208.0" promptText="Navn (Eks: Ola Nordmann)">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font></TextField>
+                              <TextField fx:id="studentid" layoutX="1.0" layoutY="28.0" prefHeight="26.0" prefWidth="203.0" promptText="StudentID (6 tall, eks: 999999)">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font></TextField>
+                              <TextField fx:id="epostr" layoutX="1.0" layoutY="54.0" prefHeight="26.0" prefWidth="203.0" promptText="E-post (Eks: Olano@stud.ntnu.no)">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font></TextField>
+                              <PasswordField fx:id="passordr1" layoutX="2.0" layoutY="78.0" prefHeight="26.0" prefWidth="197.0" promptText="Passord(8-20 tegn,Eks: Test1234!)">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font></PasswordField>
+                              <PasswordField fx:id="passordr2" layoutX="2.0" layoutY="104.0" prefHeight="26.0" prefWidth="197.0" promptText="Gjenta passord">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font></PasswordField>
                               <Button fx:id="registrer" layoutX="-6.0" layoutY="153.0" mnemonicParsing="false" onAction="#handleRegistrerPress" prefHeight="26.0" prefWidth="218.0" text="Registrer" />
                            </children></AnchorPane>
                     </content>
@@ -43,9 +60,12 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TextField fx:id="fagkode" layoutY="16.0" prefHeight="26.0" prefWidth="131.0" promptText="Legg inn fagkode" />
-                  <TextField fx:id="karakter" layoutX="131.0" layoutY="16.0" prefHeight="26.0" prefWidth="123.0" promptText="Karakter (A-F)" />
-                  <Button fx:id="leggTil" layoutX="254.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleLeggtil" text="Legg til" />
+                  <TextField fx:id="fagkode" layoutX="1.0" layoutY="3.0" prefHeight="26.0" prefWidth="131.0" promptText="Fagkode(Eks TTM4100)">
+                     <font>
+                        <Font size="11.0" />
+                     </font></TextField>
+                  <TextField fx:id="karakter" layoutX="132.0" layoutY="3.0" prefHeight="26.0" prefWidth="123.0" promptText="Karakter (A-F)" />
+                  <Button fx:id="leggTil" layoutX="255.0" layoutY="3.0" mnemonicParsing="false" onAction="#handleLeggtil" text="Legg til" />
                   <Button fx:id="lagre" layoutX="2.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleLagre" prefHeight="26.0" prefWidth="103.0" text="Lagre" />
                   <Button fx:id="loggUt" layoutX="104.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleLoggUt" prefHeight="26.0" prefWidth="218.0" text="Logg ut" />
                   <ListView fx:id="liste" layoutX="5.0" layoutY="50.0" prefHeight="189.0" prefWidth="310.0" />
@@ -54,6 +74,8 @@
                   <Label fx:id="gjennomsnitt" layoutX="4.0" layoutY="298.0" prefHeight="26.0" prefWidth="123.0" />
                   <Label fx:id="median" layoutX="163.0" layoutY="303.0" prefHeight="26.0" prefWidth="150.0" />
                   <Button fx:id="slett" layoutX="5.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="26.0" prefWidth="123.0" text="Slett all historikk" />
+                  <Label fx:id="leggTilLabel" layoutX="6.0" layoutY="33.0" prefHeight="17.0" prefWidth="303.0" textFill="#e81414" />
+                  <Label fx:id="registrerLabel" layoutX="3.0" layoutY="256.0" prefHeight="93.0" prefWidth="242.0" textFill="#f21313" wrapText="true" />
                </children>
             </AnchorPane>
         </items>

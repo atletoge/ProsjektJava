@@ -23,7 +23,7 @@ public class KarakterController {
     private PasswordField passordr1, passordr2, passordl;
 
     @FXML
-    public Label mlabel, glabel, median, gjennomsnitt;
+    public Label mlabel, glabel, median, gjennomsnitt, loggInnLabel, registrerLabel, leggTilLabel;
 
     private FileOperations fileOperations;
     private Person person;
@@ -50,6 +50,7 @@ public class KarakterController {
         median.setVisible(true);
         mlabel.setVisible(true);
         glabel.setVisible(true);
+        slett.setVisible(true);
     }
 
     @FXML
@@ -69,28 +70,43 @@ public class KarakterController {
         median.setVisible(false);
         mlabel.setVisible(false);
         glabel.setVisible(false);
+        slett.setVisible(false);
     }
 
     @FXML
     public void handleLoggInn() {
-        Person person = new Person(Integer.parseInt(studentidl.getText()), passordl.getText());
-        this.fileOperations = new FileOperations(person);
-        this.person = person;
-        fileOperations.validateLoginData(person);
-        courses.addAll(fileOperations.readUserData(person));
-        login();
-        showGrades();
-        handleMeanValue();
-        handleMedian();
+        try {
+            Person person = new Person(Integer.parseInt(studentidl.getText()), passordl.getText());
+            this.fileOperations = new FileOperations(person);
+            this.person = person;
+            fileOperations.validateLoginData(person);
+            courses.addAll(fileOperations.readUserData(person));
+            login();
+            showGrades();
+            handleMeanValue();
+            handleMedian();
+            loggInnLabel.setText("");
+        } catch (Exception e) {
+            loggInnLabel.setText("Feil studentID og/eller passord.");
+        }
+        
         
     }
 
     @FXML
     public void handleRegistrerPress() {
-        Person person = new Person(navn.getText(), Integer.parseInt(studentid.getText()), epostr.getText(), passordr1.getText(), passordr2.getText());
-        this.person = person;
-        this.fileOperations = new FileOperations(this.person);
-        login();
+        try {
+            Person person = new Person(navn.getText(), Integer.parseInt(studentid.getText()), epostr.getText(), passordr1.getText(), passordr2.getText());
+            this.person = person;
+            this.fileOperations = new FileOperations(this.person);
+            login();
+            registrerLabel.setText("");
+            loggInnLabel.setText("");
+        } catch (Exception e) {
+            String message = e.getMessage();
+            registrerLabel.setText(message);
+        }
+        
     }
     
 
@@ -101,12 +117,19 @@ public class KarakterController {
 
     @FXML
     public void handleLeggtil() {
-        person.addGrade(fagkode.getText(), karakter.getText().charAt(0));
-        courses.clear();
-        courses.addAll(person.getGrades());
-        showGrades();
-        handleMeanValue();
-        handleMedian();
+        try {
+            person.addGrade(fagkode.getText(), karakter.getText().charAt(0));
+            courses.clear();
+            courses.addAll(person.getGrades());
+            showGrades();
+            handleMeanValue();
+            handleMedian();
+            leggTilLabel.setText("");
+        } catch (Exception e) {
+            String message = e.getMessage();
+            leggTilLabel.setText(message);
+        }
+        
     }
 
     @FXML
