@@ -22,6 +22,11 @@ public class FileOperations implements FileShell {
         
     }
 
+    public Person getPerson() {
+        return this.person;
+    }
+
+
     @Override
     public void saveUserData(Person person) {
         try {
@@ -48,7 +53,6 @@ public class FileOperations implements FileShell {
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException("Finner ikke filen");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         
@@ -89,7 +93,7 @@ public class FileOperations implements FileShell {
                 }
             }
         } catch (Exception e) {
-            //TODO: handle exception
+            e.printStackTrace();
         } return false;
         
     }
