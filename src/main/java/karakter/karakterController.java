@@ -117,6 +117,7 @@ public class KarakterController {
 
     @FXML
     public void handleLeggtil() {
+        if()
         try {
             person.addGrade(fagkode.getText(), karakter.getText().charAt(0));
             courses.clear();

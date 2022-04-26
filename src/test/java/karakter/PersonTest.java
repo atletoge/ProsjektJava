@@ -121,10 +121,8 @@ public class PersonTest {
         assertEquals(testList.toString(), person.getGrades().toString());
         assertThrows(IllegalArgumentException.class, () -> {
             person.addGrade("TTM4100", 'C');
-        }, "Du kan ikke legge til samem fag to ganger");
+        }, "Skal throwe siden det ikke er mulig å legge til en fagkode mer enn en gang");
     }
-
-    //Husk å sjekke om du må legge til test for delete history
 
 }
 

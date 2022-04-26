@@ -47,12 +47,12 @@ public class KalkulatorTest {
         Kalkulator kalkulator = new Kalkulator(person);
         String korrekt = "5.166666666666667";
         kalkulator.setMeanValue(kalkulator.getGradeList());
-        assertEquals(korrekt, kalkulator.getMeanValue());
+        assertEquals(korrekt, kalkulator.getMeanValue()); // Sjekker at det kommer riktig gjennomsnittsverdi i retur når det kalkuleres med en populert liste
         // Tester med tom liste
         String korrekt1 = "0.0";
         Kalkulator kalkulator1 = new Kalkulator(person1);
         kalkulator1.setMeanValue(kalkulator1.getGradeList());
-        assertEquals(korrekt1, kalkulator1.getMeanValue());
+        assertEquals(korrekt1, kalkulator1.getMeanValue()); // Sjekker at returverdi er "0.0" når listen er tom
     }
 
     @Test
@@ -61,11 +61,11 @@ public class KalkulatorTest {
         Kalkulator kalkulator = new Kalkulator(person);
         char korrekt = 'B';
         kalkulator.setMedian(kalkulator.getGradeList());
-        assertEquals(String.valueOf(korrekt), String.valueOf(kalkulator.getMedian()));
+        assertEquals(String.valueOf(korrekt), String.valueOf(kalkulator.getMedian())); // Sjekker at mediankarakter blir riktig
         char korrekt1 = '0';
         Kalkulator kalkulator1 = new Kalkulator(person1);
         kalkulator1.setMedian(kalkulator1.getGradeList());
-        assertEquals(String.valueOf(korrekt1), String.valueOf(kalkulator1.getMedian()));
+        assertEquals(String.valueOf(korrekt1), String.valueOf(kalkulator1.getMedian())); // Sjekker at det returneres '0' her siden det er hva metoden skal gjøre om listen med karakterer er tom
 
     }
 

@@ -24,7 +24,7 @@ public class FileOperationsTest {
     @DisplayName("Test konstruktør")
     public void testConstructor() {
         FileOperations fileOperations = new FileOperations(person);
-        assertEquals("913892;Test1234!", fileOperations.getPerson().toString()); 
+        assertEquals("913892;Test1234!", fileOperations.getPerson().toString()); // Tester om konstruktøren virket med å få ut person-objektet i fileoperations som en string
     }
 
     @Test
