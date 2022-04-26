@@ -87,7 +87,8 @@ public class KarakterController {
             handleMedian();
             loggInnLabel.setText("");
         } catch (Exception e) {
-            loggInnLabel.setText("Feil studentID og/eller passord.");
+            String message = e.getMessage();
+            loggInnLabel.setText(message);
         }
         
         
