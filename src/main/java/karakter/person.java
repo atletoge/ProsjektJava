@@ -145,6 +145,7 @@ public class Person {
     public String toString() {
         return studentID+";"+password;
     }
+    
     //Følte ikke vi trengte testkode for denne. 
     public void deleteHistory() {
         this.grades = new ArrayList();

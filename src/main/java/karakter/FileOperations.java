@@ -30,7 +30,7 @@ public class FileOperations implements FileShell {
     @Override
     public void saveUserData(Person person) {
         try {
-            // Brukeren eksisterer allerede så vi må trikse litt
+            // Brukeren eksisterer allerede så vi må trikse litt og skrive over filen før vi legger til de nye dataene
             if(this.validateLoginData(person)) {
                 RandomAccessFile tempFile = new RandomAccessFile("userdata.txt", "rw");
                 String remove;
@@ -64,7 +64,7 @@ public class FileOperations implements FileShell {
         String replacedString = oldGrades.replace("[", "").replace("]","").replace("\t","").replace(" ", "");
         String[] gradeArray = replacedString.split(",");
         List<String> gradeList = Arrays.asList(gradeArray);
-        if(gradeList.size() > 1) {
+        if(gradeList.size() > 1) { // Om det allerede er noe i listen som ble lest fra fil i validateLoginData, så må dette populeres på nytt og gjøres her.
             for (int i = 0; i < gradeList.size(); i+=2) {
                 String course = gradeList.get(i);
                 char grade = gradeList.get(i+1).charAt(0);
@@ -88,6 +88,7 @@ public class FileOperations implements FileShell {
                     liste.add(string);
                 }
                 if((Integer.parseInt(liste.get(0)) == this.person.getStudentID()) && liste.get(1).equals(this.person.getPassword())) {
+                    // Sjekker om det som ble lest fra fil av studentID og PW samsvarer med det inputen i appen er
                     this.oldGrades = liste.get(2);
                     return true;
                 }
