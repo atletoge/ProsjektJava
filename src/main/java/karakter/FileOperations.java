@@ -11,10 +11,8 @@ import java.util.concurrent.locks.ReadWriteLock;
 public class FileOperations implements FileShell {
 
 
-    Person person;
-    int studentID;
-    String password;
-    String oldGrades;
+    private Person person;
+    private String oldGrades;
 
     public FileOperations(Person person) {
             this.person = person;
