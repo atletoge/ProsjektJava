@@ -11,10 +11,10 @@ import javafx.scene.control.TextField;
 
 public class KarakterController {
     @FXML
-    public TextField epostr, studentidl, studentid,navn,karakter,fagkode;
+    private TextField epostr, studentidl, studentid,navn,karakter,fagkode;
 
     @FXML
-    public Button loggInn, registrer,lagre,loggUt, leggTil, slett;
+    private Button loggInn, registrer,lagre,loggUt, leggTil, slett;
 
     @FXML
     private ListView<Course> liste;
@@ -23,7 +23,7 @@ public class KarakterController {
     private PasswordField passordr1, passordr2, passordl;
 
     @FXML
-    public Label mlabel, glabel, median, gjennomsnitt, loggInnLabel, registrerLabel, leggTilLabel;
+    private Label mlabel, glabel, median, gjennomsnitt, loggInnLabel, registrerLabel, leggTilLabel;
 
     private FileOperations fileOperations;
     private Person person;

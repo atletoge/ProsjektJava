@@ -65,7 +65,7 @@ public class Kalkulator {
     }
 
     public List<Character> getGradeList() {
-        return gradeList;
+        return new ArrayList<Character>(gradeList);
     }
 
 }
