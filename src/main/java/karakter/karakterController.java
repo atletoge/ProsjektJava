@@ -117,19 +117,23 @@ public class KarakterController {
 
     @FXML
     public void handleLeggtil() {
-        if()
-        try {
-            person.addGrade(fagkode.getText(), karakter.getText().charAt(0));
-            courses.clear();
-            courses.addAll(person.getGrades());
-            showGrades();
-            handleMeanValue();
-            handleMedian();
-            leggTilLabel.setText("");
-        } catch (Exception e) {
-            String message = e.getMessage();
-            leggTilLabel.setText(message);
+        if(karakter.getLength() > 1) {
+            leggTilLabel.setText("Karakter-feltet skal inneholde 1 bokstav");
+        } else {
+            try {
+                person.addGrade(fagkode.getText(), karakter.getText().charAt(0));
+                courses.clear();
+                courses.addAll(person.getGrades());
+                showGrades();
+                handleMeanValue();
+                handleMedian();
+                leggTilLabel.setText("");
+            } catch (Exception e) {
+                String message = e.getMessage();
+                leggTilLabel.setText(message);
+            }
         }
+        
         
     }
 
