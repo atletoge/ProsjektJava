@@ -33,7 +33,7 @@ public class FileOperationsTest {
         File file = new File("userdata.txt");
         long lengde = file.length();
         Random rnd = new Random();
-        int tilfeldig = rnd.nextInt(999999);
+        int tilfeldig = Integer.parseInt(5+Integer.toString(rnd.nextInt(99999)));
         Person person1 = new Person("Test Testesen", tilfeldig, "testte@stud.ntnu.no", "Test1234!", "Test1234!");
         FileOperations fileOperations = new FileOperations(person1);
         fileOperations.saveUserData(person1);

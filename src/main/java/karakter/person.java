@@ -47,7 +47,7 @@ public class Person {
         }
     }
     public List<Course> getGrades() {
-        return new ArrayList<Course>(this.grades); //returnerer en kopi av lista, ikke originalen (innkapsling osv.)
+        return new ArrayList<Course>(this.grades); 
     }
 
     private void setName(String name) {
@@ -69,7 +69,7 @@ public class Person {
                 if(splitEmail[1].equals("stud.ntnu.no")) {
                     return true;
                 }
-            }throw new IllegalArgumentException("Mailadressen må være på format olano@stud.ntnu.no");
+            }throw new IllegalArgumentException("Mailadressen må være på format 'fornavn+to første bokstaver i etternavn'@stud.ntnu.no, eks Ola Normdann = olano@stud.ntnu.no");
 
         }
         throw new IllegalArgumentException("Mailadressen må inneholde akkurat 1 alfakrøll");
@@ -145,8 +145,7 @@ public class Person {
     public String toString() {
         return studentID+";"+password;
     }
-    
-    //Følte ikke vi trengte testkode for denne. 
+     
     public void deleteHistory() {
         this.grades = new ArrayList();
     }

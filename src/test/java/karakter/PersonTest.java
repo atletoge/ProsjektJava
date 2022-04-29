@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,9 +19,11 @@ public class PersonTest {
     @Test
     @DisplayName("Test konstruktør for registrering")
     public void testConstructor() {
-        Person person = new Person("Atle Tøge", 234591, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
+        Random rnd = new Random();
+        int tilfeldig = Integer.parseInt(5+Integer.toString(rnd.nextInt(99999)));
+        Person person = new Person("Atle Tøge", tilfeldig, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
         assertEquals("Atle Tøge", person.getName());
-        assertEquals(234591, person.getStudentID());
+        assertEquals(tilfeldig, person.getStudentID());
         assertEquals("atletø@stud.ntnu.no", person.getEmail());
         assertEquals("Test1234!", person.getPassword());
         FileOperations fileOperations = new FileOperations(person);
@@ -33,7 +36,9 @@ public class PersonTest {
     @Test
     @DisplayName("Test logg på konstruktør")
     public void testSecondConstructor() {
-        Person person = new Person("Atle Tøge", 234691, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
+        Random rnd = new Random();
+        int tilfeldig = Integer.parseInt(5+Integer.toString(rnd.nextInt(99999)));
+        Person person = new Person("Atle Tøge", tilfeldig, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
         FileOperations fileOperations = new FileOperations(person);
         fileOperations.saveUserData(person);
         Person person1 = new Person(234691, "Test1234!");
@@ -111,7 +116,9 @@ public class PersonTest {
     @Test
     @DisplayName("Testing av å legge til fag")
     public void testAddGrade() {
-        Person person = new Person("Atle Tøge", 234591, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
+        Random rnd = new Random();
+        int tilfeldig = Integer.parseInt(5+Integer.toString(rnd.nextInt(99999)));
+        Person person = new Person("Atle Tøge", tilfeldig, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
         person.addGrade("TTM4100", 'A');
         person.addGrade("TTM4102", 'B');
         List<Course> testList;

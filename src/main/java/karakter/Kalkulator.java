@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 public class Kalkulator {
 
-    //private String grades;
     private List<Character> gradeList = new ArrayList<>();
     private String median;
     private String meanValue;
@@ -49,7 +48,6 @@ public class Kalkulator {
         } return 0.0;
     }
 
-    // Tror ikke denne trenger å testes, bedre å ha den som private. Blir indirekte testet i calculatemeanvalue
     private int toNumber(char chr) {
         return (71 - chr);
     }

@@ -9,5 +9,4 @@ public interface FileShell {
 
     List<Course> readUserData(Person person);
 
-    //List<String> readLoginData(Person person);
 }
