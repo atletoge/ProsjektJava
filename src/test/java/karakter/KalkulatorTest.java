@@ -17,7 +17,7 @@ public class KalkulatorTest {
 
     @BeforeEach
     public void beforeEach() {
-        Person person4 = new Person("Atle Tøge", 910092, "atletø@stud.ntnu.no", "Test1234!", "Test1234!");
+        Person person4 = new Person("Ola Nordmann", 910092, "olano@stud.ntnu.no", "Test1234!", "Test1234!");
         person4.addGrade("TTM4100", 'C');
         person4.addGrade("TTM4102", 'B');
         person4.addGrade("TTM4105", 'A');
@@ -25,7 +25,7 @@ public class KalkulatorTest {
         person4.addGrade("TTM4222", 'A');
         person4.addGrade("TTM4132", 'B');
         this.person = person4;
-        Person person1 = new Person("Atle Toge", 872101, "atleto@stud.ntnu.no", "Test1234!", "Test1234!");
+        Person person1 = new Person("Ola Nordmann", 872101, "olano@stud.ntnu.no", "Test1234!", "Test1234!");
         this.person1 = person1;
     }
 

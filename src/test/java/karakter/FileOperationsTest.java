@@ -16,6 +16,7 @@ public class FileOperationsTest {
 
     @BeforeEach
     public void beforeEach() {
+        // Har laget denne brukeren manuelt i userdata filen
         Person person = new Person(913892, "Test1234!");
         this.person = person;
     }
